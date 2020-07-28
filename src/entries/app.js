@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import Home from '../pages/components/home';
 import Videos from '../pages/containers/videos';
 import Contact from '../pages/components/contact';
+import NotFound from '../pages/components/not-found';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reducer from '../reducers/index';
@@ -10,7 +11,7 @@ import { Map as map } from 'immutable';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter,Switch ,Route } from 'react-router-dom';
 import Header from '../pages/components/header';
 // function logger({ getState, dispatch}) {
 //   return (next) => {
@@ -53,9 +54,12 @@ render(
     <Provider store={store}>
       <React.Fragment>
         <Header />
-        <Route exact path="/" component={Home} />
-        <Route exact path="/videos" component={Videos} />
-        <Route exact path="/contacto" component={Contact} />
+          <Switch>
+            <Route exact path="/" component={Home} />
+          <Route exact path="/videos" component={Videos} />
+          <Route exact path="/contacto" component={Contact} />
+          <Route component={NotFound} />
+          </Switch>
       </React.Fragment>
     </Provider>
   </BrowserRouter>
