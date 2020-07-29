@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { withRouter } from 'react-router';
 
 import './header.css';
 import logo from '../../../images/logo.png';
 
 class Header extends Component {
+  handleClick = () => {
+    this.props.history.goBack();
+  };
+
   render() {
     return (
       <header className="Header">
@@ -26,6 +31,9 @@ class Header extends Component {
             <li>
               <NavLink exact to="/perfil" activeClassName="is-selected">Perfil</NavLink>
             </li>
+            <li>
+              <a onClick={this.handleClick}>Back</a>
+            </li>
           </ul>
         </nav>
       </header>
@@ -33,4 +41,4 @@ class Header extends Component {
   }
 }
 
-export default Header
+export default withRouter(Header);
