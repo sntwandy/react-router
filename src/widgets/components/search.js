@@ -1,5 +1,6 @@
 import React from 'react';
 import './search.css';
+import { Prompt } from 'react-router';
 // function Search(props) {
 //   return (
 //     <form action=""></form>
@@ -9,8 +10,11 @@ import './search.css';
 const Search = (props) => (
   <form
     className="Search"
-    onSubmit={props.handleSubmit}
-  >
+    onSubmit={props.handleSubmit}>
+    <Prompt
+      when={props.prompt}
+      message= "Are you sure to go out the page?"
+    />
     <input
       ref={props.setRef}
       type="text"
